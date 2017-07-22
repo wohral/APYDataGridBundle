@@ -241,12 +241,14 @@ class Vector extends Source
             throw new \InvalidArgumentException('Data should be an array with content');
         }
 
+        // This seems to exclude ...
         if (is_object(reset($this->data))) {
             foreach ($this->data as $key => $object) {
                 $this->data[$key] = (array) $object;
             }
         }
 
+        // ... this other (or vice versa)
         $firstRaw = reset($this->data);
         if (!is_array($firstRaw) || empty($firstRaw)) {
             throw new \InvalidArgumentException('Data should be a two-dimentional array');
